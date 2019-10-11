@@ -17,26 +17,35 @@ from utils import dateutils
 
 class ByrTopTenPipeline(object):
 
+    def save_post(self, item, mysql_conn_pool):
+        select_sql = "select * from byr_post_detail where post_id = '%s' and `current_date` = '%s'" % (item['id'], dateutils.get_current_date())
+        result = mysql_conn_pool.get_all(select_sql)
+        if result is not None:
+            update_sql = "update byr_post_detail set modify_time = '%s' where id = '%s'" % (dateutils.get_now(), result[0][0])
+            mysql_conn_pool.execute(update_sql)
+        else:
+            insert_sql = "insert into byr_post_detail(post_id,title,author,pub_date,broad,link,create_time,modify_time,`current_date`)\
+                values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % \
+                (item['id'], item['title'], item['author'], dateutils.format_gmt(item['pub_date']), item['broad'], item['link'], dateutils.get_now(), dateutils.get_now(), dateutils.get_current_date())
+            mysql_conn_pool.execute(insert_sql)
+
+    def save_author(self, item, mysql_conn_pool):
+        select_sql = "select * from byr_user_info where user_id = '%s'" % item['author']
+        result = mysql_conn_pool.get_all(select_sql)
+        if result is None:
+            insert_sql = "insert into byr_user_info(user_id,create_time,modify_time) values ('%s', '%s', '%s')" % \
+                (item['author'], dateutils.get_now(), dateutils.get_now())
+            mysql_conn_pool.execute(insert_sql)
+
     def process_item(self, item, spider):
         logging.debug(item)
         mysql_conn_pool = mysqlconnpool.MysqlConnPool()
         is_end = 1
         try:
-            select_sql = "select * from byr_post_detail where post_id = '%s' and `current_date` = '%s'" % (item['id'], dateutils.get_current_date())
-            result = mysql_conn_pool.get_all(select_sql)
-            if result is not None:
-                update_sql = "update byr_post_detail set modify_time = '%s' where id = '%s'" % (dateutils.get_now(), result[0][0])
-                mysql_conn_pool.execute(update_sql)
-            else:
-                insert_sql = "insert into byr_post_detail(post_id,title,author,pub_date,broad,link,create_time,modify_time,`current_date`)\
-                    values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % \
-                    (item['id'], item['title'], item['author'], dateutils.format_gmt(item['pub_date']), item['broad'], item['link'], dateutils.get_now(), dateutils.get_now(), dateutils.get_current_date())
-                mysql_conn_pool.execute(insert_sql)
-            insert_user_info_sql = "insert into byr_user_info(user_id,create_time,modify_time) values ('%s', '%s', '%s')" % \
-                    (item['author'], dateutils.get_now(), dateutils.get_now())
-            mysql_conn_pool.execute(insert_user_info_sql)
+            self.save_post(item, mysql_conn_pool)
+            self.save_author(item, mysql_conn_pool)
             is_end = 1
-        except Exception as ex:
+        except Exception:
             traceback.print_exc()
             is_end = 0
         finally:
@@ -59,3 +68,4 @@ class ByrUserInfoPipeline(object):
             % (item['face_url'], item['user_name'], item['level'], item['life'], item['score'], item['post_count'], dateutils.get_now(), item['user_id'])
         mysql_conn_pool.execute(update_sql)
         mysql_conn_pool.dispose()
+        return item
