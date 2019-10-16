@@ -18,6 +18,7 @@ class ByrTopTenItem(scrapy.Item):
     author = scrapy.Field()
     pub_date = scrapy.Field()
     id = scrapy.Field()
+    description = scrapy.Field()
 
 
 class ByrPostDetailItem(scrapy.Item):

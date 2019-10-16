@@ -10,6 +10,11 @@ def format_gmt(gmt_time):
     return datetime.strptime(gmt_time, '%a, %d %b %Y %H:%M:%S GMT')
 
 
+def format_cst(cst_time):
+    time_struct = time.strptime(cst_time, '%a %b %d %H:%M:%S %Y')
+    return time.strftime('%Y-%m-%d %H:%M:%S', time_struct)
+
+
 # 获取当前时间，格式：'%YYYY-%mm-%dd %HH:%MM:%SS'
 def get_now():
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
@@ -22,5 +27,6 @@ def get_current_date():
 
 if __name__ == "__main__":
     print(format_gmt('Thu, 26 Sep 2019 09:36:15 GMT'))
+    print(format_cst('Mon Oct 14 23:58:11 2019'))
     print(get_now())
     print(get_current_date())

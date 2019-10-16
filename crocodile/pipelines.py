@@ -24,9 +24,9 @@ class ByrTopTenPipeline(object):
             update_sql = "update byr_post_detail set modify_time = '%s' where id = '%s'" % (dateutils.get_now(), result[0][0])
             mysql_conn_pool.execute(update_sql)
         else:
-            insert_sql = "insert into byr_post_detail(post_id,title,author,pub_date,broad,link,create_time,modify_time,`current_date`)\
-                values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % \
-                (item['id'], item['title'], item['author'], dateutils.format_gmt(item['pub_date']), item['broad'], item['link'], dateutils.get_now(), dateutils.get_now(), dateutils.get_current_date())
+            insert_sql = "insert into byr_post_detail(post_id,title,author,pub_date,broad,link,create_time,modify_time,`current_date`,description)\
+                values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % \
+                (item['id'], item['title'], item['author'], dateutils.format_cst(item['pub_date']), item['broad'], item['link'], dateutils.get_now(), dateutils.get_now(), dateutils.get_current_date(), item['description'])
             mysql_conn_pool.execute(insert_sql)
 
     def save_author(self, item, mysql_conn_pool):

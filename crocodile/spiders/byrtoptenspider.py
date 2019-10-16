@@ -17,13 +17,17 @@ class ByrTopTenSpider(scrapy.Spider):
             title = sel.xpath('title/text()').extract()[0]
             link = sel.xpath('link/text()').extract()[0]
             author = sel.xpath('author/text()').extract()[0]
-            pub_date = sel.xpath('pubDate/text()').extract()[0]
+            #pub_date = sel.xpath('pubDate/text()').extract()[0]
+            description = sel.xpath('description/text()').extract()[0]
             broad = link.split('/')[-2].strip().lower()
             id = link.split('/')[-1].strip()
+            msg = description.split('<br/>')[2]
+            pub_date = msg[msg.find('(')+1:msg.find(')')]
             item['title'] = title
             item['link'] = link
             item['author'] = author
             item['pub_date'] = pub_date
             item['broad'] = broad
             item['id'] = broad + "_" + id
+            item['description'] = description
             yield item  # 返回item（列表），return会直接退出程序，这里是有yield
