@@ -25,8 +25,7 @@ class ByrPostDetailItem(scrapy.Item):
         super().__init__()
 
     id = scrapy.Field()
-    broad = scrapy.Field()
-    read_count = scrapy.Field()
+    reply_count = scrapy.Field()
 
 
 class ByrUserInfoItem(scrapy.Item):

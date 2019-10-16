@@ -57,6 +57,11 @@ class ByrPostDetailPipeline(object):
 
     def process_item(self, item, spider):
         logging.debug(item)
+        insert_sql = "insert into byr_post_reply_count(post_id,reply_count,create_time) values ('%s', '%s', '%s')" % \
+            (item['id'], item['reply_count'], dateutils.get_now())
+        mysql_conn_pool = mysqlconnpool.MysqlConnPool()
+        mysql_conn_pool.execute(insert_sql)
+        mysql_conn_pool.dispose()
 
 
 class ByrUserInfoPipeline(object):
