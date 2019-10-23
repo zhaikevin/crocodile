@@ -1,0 +1,13 @@
+advice, announce, bbshelp, bet, bm_market, byr12, cooperation, forumcommittee, id, progress, score, sysop, test
+notepad, vote, bm_apply, boardmanager, outstandingbm, board_apply, board_document, board_management, byr, byrstar, showcase, cnadmin, cnannounce, cnlists, cntest, byrcourt, complain
+academicaffairs, aimbupt, bupt, buptnet, buptpost, byr_bulletin, campuscard, daonian, eid, focus, graduation, houqin, jijianchu, junxun, library, mybupt, recommend, securitydivision, selfsupport, studentaffairs, studentquery
+aceteam, buptassociation, buptauta, buptmstc, buptstudentunion, buptstv, buptweekly, chineseorchestra, graduateunion, oracleclub, orchestra, philharmonic, redcross, scda, sica, wowbuptguild, buptnu, dmda, graduatesch, hongfu, intr, ipoc, is, sa, scs, see, sem, sh, shahe, sice, sie, sl, spm, ss, sse, ste
+acm_icpc, bbsman_dev, bbsopenapi, circuit, communications, cpp, database, dotnet, economics, embedded_system, hardware, innovation, java, linux, makerclub, mathmodel, matlab, ml_dm, mobileinternet, mobileterminalat, notebook, officetool, paper, python, searchengine, security, softdesign, windows, wwwtechnology
+aimgraduate, bnu, bupt_internet_club, byratsh, byratsz, certification, civilservant, consulting, entrepreneurship, familylife, financecareer, financial, goabroad, home, it, job, jobinfo, jump, netresources, overseas, parttimejob, pmatbupt, studyshare, weather, worklife
+ad_agent, advertising, booktrade, buptdiscount, co_buying, computertrade, house, house_agent, ticket, btadvice, btannounce, btbt, btcomic, btcomplain, btdocument, btgame, btmovie, btmusic, btpending, btreward, btshow, btsoftware, btsport, bttv
+astronomy, debate, dv, englishbar, ghost, guitar, japanese, koreanwind, music, photo, poetry, psyhealthonline, quyi, reading, sciencefiction, tshirt
+beauty, blessing, clothing, constellations, digilife, diylife, environment, feeling, food, friends, health, iwhisper, lostandfound, talking
+automotor, boardgame, comic, flash, hero, joke, karaok, killbar, movie, netliterature, nvote, pet, picture, plant, radioonline, superstar, travel, tv, videocool
+athletics, badminton, basketball, billiards, chess, cycling, dancing, football, gspeed, gymnasium, kungfu, rugby, shuttlecock, sk8, skating, swim, tabletennis, taekwondo, tennis, volleyball
+buptdnf, cstrike, diablo, dota, footballmanager, hearthstone, lol, onlinegame, pcgame, popkart, tvgame, we, wow, xyq
+anhui, cantonese, chongqing, fujian, gansu, guangxi, guizhou, hainan, hebei, henan, hubei, hunan, innermongolia, jiangsu, jiangxi, northeast, peking, qinghai, shaanxi, shandong, shanxi, sichuan, tianjin, xinjiang, zhejiang
